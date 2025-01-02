@@ -28,3 +28,8 @@ TODO
 ## Credits
 
 TODO
+
+## TODO
+
+- [ ] Make a `modules/common.nix` with shared pkgs between hosts
+- [ ] Maybe only use home-manager for STATIC parts
