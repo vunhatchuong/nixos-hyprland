@@ -1,5 +1,4 @@
-# NixOS Hyprland Install Script
-
+# NixOS Install Script
 
 [NixOS](https://nixos.org/) version of my [arch-hyprland](https://github.com/vunhatchuong/arch-hyprland) install script.
 
@@ -7,24 +6,37 @@ Personalize for my [dotfiles](https://github.com/vunhatchuong/.dotfiles).
 
 ## Prerequisites
 
-TODO
+- [NixOS](https://nixos.org/download/#nixos-iso) GUI installation with "no desktop" option.
+- Dotfiles manager: [dotter](https://github.com/SuperCuber/dotter/)
 
-## Nvidia
+## Usage
 
-TODO
+Installation
 
-## Apps
+```bash
+nix-shell -p git curl
+sh <(curl -L https://github.com/vunhatchuong/nixos-hyprland/raw/main/install.sh)
+```
 
- Dotfiles manager: [dotter](https://github.com/SuperCuber/dotter/)
- Zsh plugin manager: [zap](https://github.com/zap-zsh/zap)
+To update later:
+
+```bash
+nh os switch -H vm
+```
 
 ## Theme
 
-- GTK and QT Themes: [Monochrome](https://github.com/pwyde/monochrome-kde/)
-- Icons: [Tela-circle-icon-theme](https://github.com/vinceliuice/Tela-circle-icon-theme)
-- Cursor: [Bibata Cursor Modern Ice](https://github.com/ful1e5/bibata)
 - Theme for others: [Sequoia-Theme](https://github.com/Sequoia-Theme/)
 
 ## Credits
 
-TODO
+- [mitchellh/nixos-config](https://github.com/mitchellh/nixos-config): Main motivator.
+- [Andrey0189/nixos-config-reborn](https://github.com/Andrey0189/nixos-config-reborn)
+- [paradoxical-dev/dots](https://github.com/paradoxical-dev/dots)
+
+## Resources
+
+- [NixOS options search](https://search.nixos.org/options)
+- [NixOS packages search](https://search.nixos.org/packages)
+- [NixOS release notes](https://nixos.org/manual/nixos/stable/release-notes)
+- [mynixos](https://mynixos.com/)
