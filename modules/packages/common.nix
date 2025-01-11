@@ -4,18 +4,12 @@
   environment.systemPackages =
     (with pkgs; [
       killall
-
       unzip
       wget
       zip
 
-      nodejs
-      python311
-      micromamba
-
-      hoppscotch
-
       dotter                                                 # Main dotfile manager
+
       zsh                                                    # ZSH shell
       starship                                               # Shell prompt
 
@@ -35,8 +29,8 @@
 
       gnupg
       git
-      git-credential-manager                                 # Run git-credential-manager configure after
-      delta                                                  # Syntax highlight for git
+      git-credential-manager
+      delta                                                  # Pager for git
 
       lazygit                                                # Git UI
       lazydocker                                             # Docker UI
@@ -48,6 +42,9 @@
       dust                                                   # Disk usage analyzer
       duf                                                    # Disk Usage
       tldr                                                   # TLDR for man pages
+
+      micromamba
+      hoppscotch
     ])
 
     ++
