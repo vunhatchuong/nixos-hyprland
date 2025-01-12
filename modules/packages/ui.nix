@@ -26,6 +26,7 @@
     bleachbit                                              # Disk cleaner
     obsidian                                               # Note taking
     zathura
+    hoppscotch
 
     jetbrains.idea-community-bin                           # Intellij
   ];

@@ -44,7 +44,6 @@
       tldr                                                   # TLDR for man pages
 
       micromamba
-      hoppscotch
     ])
 
     ++
