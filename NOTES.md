@@ -20,6 +20,14 @@ Inspired by [mitchellh](https://github.com/mitchellh/nixos-config/) setup.
 - [nix-community/nix-direnv](https://github.com/nix-community/nix-direnv)
 - [datsfilipe/nvim-colorscheme-template](https://github.com/datsfilipe/nvim-colorscheme-template)
 
+## Useful commands
+
+List all installed packages:
+
+```bash
+nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq
+```
+
 ## Resources
 
 - [Misterio77/nix-starter-configs](https://github.com/Misterio77/nix-starter-configs)
