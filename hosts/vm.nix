@@ -77,7 +77,7 @@
   # Shared folder
   # fileSystems."/host" = {
   #   fsType = "fuse./run/current-system/sw/bin/vmhgfs-fuse";
-  #   device = ".host:/";
+  #   device = ".host:/<SHARED_FOLDER_NAME>";
   #   options = [
   #     "umask=22"
   #     "uid=1000"

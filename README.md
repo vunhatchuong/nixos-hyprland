@@ -43,7 +43,7 @@ Make a tarball: Run `make wsl`
 Then install it:
 
 ```bash
-wsl --import <name> <storage\path> <.\path\to\tarball.tar.gz>
+wsl --import <name> <storage\path> <.\path\to\tarball.tar.gz> --version 2
 ...
 
 wsl -d nixos
