@@ -3,6 +3,7 @@
 
   environment.systemPackages =
     (with pkgs; [
+      gnumake
       killall
       unzip
       wget

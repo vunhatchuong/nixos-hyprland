@@ -9,9 +9,9 @@ Personalize for my [dotfiles](https://github.com/vunhatchuong/.dotfiles).
 - [NixOS](https://nixos.org/download/#nixos-iso) GUI installation with "no desktop" option.
 - Dotfiles manager: [dotter](https://github.com/SuperCuber/dotter/)
 
-## Usage
+## Installation
 
-Installation
+### NixOS
 
 > [!CAUTION]
 > This will overrides hardware files inside of `./hosts/hardware` with your own.
@@ -26,6 +26,28 @@ To update later:
 ```bash
 nh os switch -H vm
 ```
+
+### WSL
+
+All credits goes to [mitchellh/nixos-config](https://github.com/mitchellh/nixos-config) and [LGUG2Z/nixos-wsl-starter](https://github.com/LGUG2Z/nixos-wsl-starter).
+
+Make a tarball: Run `make wsl`
+
+Then install it:
+
+```bash
+wsl --import <name> <storage\path> <.\path\to\tarball.tar.gz>
+...
+
+wsl -d nixos
+...
+
+# Optionally, make it the default
+wsl -s nixos
+```
+
+For more information, see [NixOS-WSL](https://github.com/nix-community/NixOS-WSL).
+
 
 ## Theme
 
