@@ -27,3 +27,5 @@ Inspired by [mitchellh](https://github.com/mitchellh/nixos-config/) setup.
 - [EmergentMind/nix-config](https://github.com/EmergentMind/nix-config)
 - [EdenEast/nyx](https://github.com/EdenEast/nyx)
 - [Zaney/zaneyos](https://gitlab.com/Zaney/zaneyos)
+- [LGUG2Z/nixos-wsl-starter](https://github.com/LGUG2Z/nixos-wsl-starter)
+- [DeterminateSystems/nix-installer](https://github.com/DeterminateSystems/nix-installer)
