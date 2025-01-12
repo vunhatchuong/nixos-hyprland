@@ -20,7 +20,7 @@
       extraPackages = with pkgs; [
         i3status
         i3lock
-     ];
+      ];
     };
   };
 

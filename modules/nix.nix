@@ -1,4 +1,9 @@
-{ config, lib, inputs, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 {
   nix = {
     # This will add each flake input as a registry
@@ -12,7 +17,7 @@
     # See https://jackson.dev/post/nix-reasonable-defaults/
     settings = {
       connect-timeout = 5;
-      min-free = 128000000;  # 128MB
+      min-free = 128000000; # 128MB
       max-free = 1000000000; # 1GB
 
       fallback = true;
@@ -20,7 +25,10 @@
       auto-optimise-store = true;
       warn-dirty = false;
 
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
   };
 }

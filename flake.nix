@@ -11,29 +11,43 @@
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs: let
-    makeSystem = import ./lib/makesystem.nix {
-      inherit nixpkgs nixpkgs-unstable inputs;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      systems,
+      treefmt-nix,
+      ...
+    }@inputs:
+    let
+      makeSystem = import ./lib/makesystem.nix {
+        inherit nixpkgs nixpkgs-unstable inputs;
+      };
+
+      forAllSystems = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+      treefmtEval = forAllSystems (pkgs: treefmt-nix.lib.evalModule pkgs {
+        projectRootFile = "flake.nix";
+      });
+
+    in
+    {
+
+      formatter = forAllSystems (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+      checks = forAllSystems (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      });
+
+      nixosConfigurations.vm = makeSystem "vm" rec {
+        system = "x86_64-linux";
+      };
+
+      nixosConfigurations.wsl = makeSystem "wsl" {
+        system = "x86_64-linux";
+        wsl = true;
+      };
     };
-
-    forAllSystems = nixpkgs.lib.genAttrs [
-      "x86_64-linux"
-    ];
-
-  in {
-
-    # Nix formatter: 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
-
-    nixosConfigurations.vm = makeSystem "vm" rec {
-      system = "x86_64-linux";
-    };
-
-    nixosConfigurations.wsl = makeSystem "wsl" {
-      system = "x86_64-linux";
-      wsl    = true;
-    };
-  };
 }

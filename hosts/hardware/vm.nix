@@ -3,25 +3,41 @@
 #
 # Since we build a VM and have full control over that hardware
 # I can hardcode this into my repository.
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 {
   imports = [ ];
 
   boot.initrd.availableKernelModules = [
-    "ata_piix" "mptspi" "uhci_hcd" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
+    "ata_piix"
+    "mptspi"
+    "uhci_hcd"
+    "ehci_pci"
+    "ahci"
+    "sd_mod"
+    "sr_mod"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/60dfbce2-773c-4caf-a47b-58e7a17c95ca";
-      fsType = "ext4";
-    };
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3B11-E0C0";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/60dfbce2-773c-4caf-a47b-58e7a17c95ca";
+    fsType = "ext4";
+  };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/3B11-E0C0";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
+  };
 
   swapDevices = [ ];
 

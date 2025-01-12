@@ -1,9 +1,13 @@
-{ nixpkgs, nixpkgs-unstable, inputs }:
+{
+  nixpkgs,
+  nixpkgs-unstable,
+  inputs,
+}:
 
 hostname:
 {
   system,
-  wsl ? false
+  wsl ? false,
 }:
 
 let
@@ -13,7 +17,8 @@ let
   hostConfig = ../hosts/${hostname}.nix;
 
   systemFunc = nixpkgs.lib.nixosSystem;
-in systemFunc rec {
+in
+systemFunc rec {
 
   # I don't know what I'm doing
   specialArgs = {
@@ -27,7 +32,7 @@ in systemFunc rec {
   inherit system;
   modules = [
     # Bring in WSL if this is a WSL build
-    (if isWSL then inputs.nixos-wsl.nixosModules.wsl else {})
+    (if isWSL then inputs.nixos-wsl.nixosModules.wsl else { })
 
     hostConfig
 

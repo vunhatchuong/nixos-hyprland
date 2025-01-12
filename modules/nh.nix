@@ -1,4 +1,5 @@
-{ user, ... }: {
+{ user, ... }:
+{
   # Provide better build output and will also handle GC in place of standard nix GC
   # Usage: nh os switch -H vm
   programs.nh = {

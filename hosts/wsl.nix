@@ -1,4 +1,5 @@
-{ pkgs, currentSystemUser, ... }: {
+{ pkgs, currentSystemUser, ... }:
+{
   imports = [
     ../modules/common.nix
     ../modules/net.nix

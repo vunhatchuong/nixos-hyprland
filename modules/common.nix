@@ -1,4 +1,11 @@
-{ config, pkgs, lib, systemSettings, userSettings, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  systemSettings,
+  userSettings,
+  ...
+}:
 {
   time.timeZone = "Asia/Ho_Chi_Minh";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -15,7 +22,10 @@
   users.users.ronny = {
     isNormalUser = true;
     home = "/home/ronny";
-    extraGroups = [ "docker" "wheel" ];
+    extraGroups = [
+      "docker"
+      "wheel"
+    ];
     # Generated with 'mkpasswd'
     hashedPassword = "$y$j9T$Ws0o6OJC/SEaRtJMt9Z82.$KJWl1EQNy/lUAzAggFswuSNmG09xugIRhkjjIGgiXF7";
   };
