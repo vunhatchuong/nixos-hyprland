@@ -50,10 +50,6 @@ select choice in "${options[@]}"; do
         hostName="vm"
         break
         ;;
-    "wsl")
-        hostName="wsl"
-        break
-        ;;
     *)
         echo "Invalid option. Please try again."
         ;;

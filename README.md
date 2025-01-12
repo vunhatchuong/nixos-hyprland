@@ -27,6 +27,13 @@ To update later:
 nh os switch -H vm
 ```
 
+To update `flake.lock`:
+
+```bash
+nix flake update
+sudo nixos-rebuild switch --flake .
+```
+
 ### WSL
 
 All credits goes to [mitchellh/nixos-config](https://github.com/mitchellh/nixos-config) and [LGUG2Z/nixos-wsl-starter](https://github.com/LGUG2Z/nixos-wsl-starter).

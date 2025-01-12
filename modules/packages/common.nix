@@ -11,7 +11,6 @@
 
       dotter                                                 # Main dotfile manager
 
-      zsh                                                    # ZSH shell
       starship                                               # Shell prompt
 
       jq                                                     # JSON processing
