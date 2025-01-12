@@ -18,7 +18,15 @@
       inherit nixpkgs nixpkgs-unstable inputs;
     };
 
+    forAllSystems = nixpkgs.lib.genAttrs [
+      "x86_64-linux"
+    ];
+
   in {
+
+    # Nix formatter: 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+
     nixosConfigurations.vm = makeSystem "vm" rec {
       system = "x86_64-linux";
     };
