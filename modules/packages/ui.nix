@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, system, inputs, ... }: {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -11,6 +11,7 @@
 
     # Not available yet
     #zen-browser-bin                                        # Browser
+    inputs.zen-browser.packages."${system}".specific
     ghostty                                                # Term
     xfce.thunar                                            # File manager
     xfce.thunar-volman                                     # Auto management of removable devices

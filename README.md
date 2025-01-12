@@ -13,6 +13,9 @@ Personalize for my [dotfiles](https://github.com/vunhatchuong/.dotfiles).
 
 Installation
 
+> [!CAUTION]
+> This will overrides hardware files inside of `./hosts/hardware` with your own.
+
 ```bash
 nix-shell -p git curl
 sh <(curl -L https://github.com/vunhatchuong/nixos-hyprland/raw/main/install.sh)
