@@ -54,6 +54,9 @@
     ]);
 
     programs = {
+      # Uses with https://github.com/nix-community/nix-direnv
+      direnv.enable = true;
+
       # Patch for mason.nvim
       nix-ld.enable = true;
       zsh = {
