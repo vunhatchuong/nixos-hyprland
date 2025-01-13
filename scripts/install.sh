@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env nix-shell
 
 set -euo pipefail
 
@@ -17,31 +17,33 @@ ERROR="${BOLD}${RED}[ERROR]${RESET}"
 WARN="${BOLD}${ORANGE}[WARN]${RESET}"
 CAT="${CYAN}[ACTION]${RESET}"
 
-# -----
+echo "----------"
 
 REPO_URL="https://github.com/vunhatchuong/nixos-hyprland.git"
-CLONE_DIR="$HOME/nixos-hyprland"
+
+DEFAULT_PARENT_DIR="$HOME"
+
+read -p "Enter the parent directory for the clone (default: $DEFAULT_PARENT_DIR): " USER_INPUT
+PARENT_DIR="${USER_INPUT:-$DEFAULT_PARENT_DIR}"
+
+NIXOS_CLONE_DIR="$PARENT_DIR/nixos-hyprland"
+DOTS_CLONE_DIR="$PARENT_DIR/.dotfiles"
+
+mkdir -p "$PARENT_DIR"
 
 if command -v git &>/dev/null; then
     echo "$OK Git is installed, continuing with installation."
-    echo "-----"
 else
     echo "$ERROR Git is not installed. Please install Git and try again."
     echo "Example: nix-shell -p git"
     exit 1
 fi
 
-echo "$INFO Ensure In Home Directory"
-cd || exit
+echo "----------"
 
-# -----
+echo "$INFO Cloning NixOS-Hyprland into: $NIXOS_CLONE_DIR"
+git clone https://github.com/vunhatchuong/nixos-hyprland.git $NIXOS_CLONE_DIR
 
-echo "-----"
-echo "$INFO Cloning & Entering NixOS-Hyprland Repository"
-git clone https://github.com/vunhatchuong/nixos-hyprland.git $HOME/nixos-hyprland
-cd $HOME/nixos-hyprland || exit
-
-echo "-----"
 options=("vm" "wsl")
 echo "$CAT Choose a hostname: "
 select choice in "${options[@]}"; do
@@ -56,26 +58,24 @@ select choice in "${options[@]}"; do
     esac
 done
 
-echo "-----"
+echo "----------"
+
 echo "$INFO Generating Hardware Configuration"
-hardware_file="./hosts/hardware/$hostName.nix"
+hardware_file="${NIXOS_CLONE_DIR}/hosts/hardware/$hostName.nix"
 sudo nixos-generate-config --show-hardware-config >"$hardware_file" 2>/dev/null
 
-echo "-----"
-echo "Installing"
+echo "$INFO Installing"
 NIX_CONFIG="experimental-features = nix-command flakes"
-sudo nixos-rebuild switch --flake .#${hostName}
+sudo nixos-rebuild switch --flake "$NIXOS_CLONE_DIR#${hostName}"
 
-# -----
+cp "${NIXOS_CLONE_DIR}/assets/.condarc" "${PARENT_DIR}"
 
-cp assets/.condarc ~/
+echo "----------"
 
-echo "-----"
-
-printf "$INFO Cloning dotfiles repository...\n"
-if git clone https://github.com/vunhatchuong/.dotfiles.git $HOME/.dotfiles; then
-    cp -r "$HOME/nixos-hyprland/assets/dotfiles-local.toml" "$HOME/.dotfiles/.dotter/local.toml"
-    cd "$HOME/.dotfiles"
+echo "$INFO Cloning dotfiles into: $DOTS_CLONE_DIR"
+if git clone https://github.com/vunhatchuong/.dotfiles.git $DOTS_CLONE_DIR; then
+    cp -r "${NIXOS_CLONE_DIR}/assets/dotfiles-local.toml" "${DOTS_CLONE_DIR}/.dotter/local.toml"
+    cd $DOTS_CLONE_DIR
     dotter
     echo -e "${OK} Dotfiles processed successfully."
 else

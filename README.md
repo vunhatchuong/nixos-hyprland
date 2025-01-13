@@ -1,24 +1,34 @@
 # NixOS Install Script
 
+> [!CAUTION]
+> Only tested and optimized for VMWare and WSL.
+
 [NixOS](https://nixos.org/) version of my [arch-hyprland](https://github.com/vunhatchuong/arch-hyprland) install script.
 
 Personalize for my [dotfiles](https://github.com/vunhatchuong/.dotfiles).
 
 ## Prerequisites
 
-- [NixOS](https://nixos.org/download/#nixos-iso) GUI installation with "no desktop" option.
+- [NixOS](https://nixos.org/download/#nixos-iso) GUI installation with "no desktop" option or minimal ISO.
 - Dotfiles manager: [dotter](https://github.com/SuperCuber/dotter/)
 
 ## Installation
 
 ### NixOS
 
+Install NixOS from NixoS Minimal ISO with [disko](https://github.com/nix-community/disko).
+
+```bash
+curl https://raw.githubusercontent.com/nix-community/vunhatchuong/main/scripts/disko-vm.nix -o /tmp/disko-config.nix
+nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount /tmp/disko-config.nix
+```
+
 > [!CAUTION]
 > This will overrides hardware files inside of `./hosts/hardware` with your own.
 
 ```bash
-nix-shell -p git curl
-sh <(curl -L https://github.com/vunhatchuong/nixos-hyprland/raw/main/install.sh)
+nix-shell -p curl git
+sh <(curl -L https://github.com/vunhatchuong/nixos-hyprland/raw/main/scripts/install.sh)
 ```
 
 To update later:
@@ -38,6 +48,8 @@ sudo nixos-rebuild switch --flake .
 
 All credits goes to [mitchellh/nixos-config](https://github.com/mitchellh/nixos-config) and [LGUG2Z/nixos-wsl-starter](https://github.com/LGUG2Z/nixos-wsl-starter).
 
+For more information, see [NixOS-WSL](https://github.com/nix-community/NixOS-WSL).
+
 Make a tarball: Run `make wsl`
 
 Then install it:
@@ -52,9 +64,6 @@ wsl -d nixos
 # Optionally, make it the default
 wsl -s nixos
 ```
-
-For more information, see [NixOS-WSL](https://github.com/nix-community/NixOS-WSL).
-
 
 ## Theme
 
