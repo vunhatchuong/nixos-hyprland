@@ -12,6 +12,7 @@
     ./hardware/vm.nix
     ../modules/boot.nix
     ../modules/common.nix
+    ../modules/disk.nix
     ../modules/fonts.nix
     ../modules/i3.nix
     ../modules/net.nix

@@ -30,10 +30,5 @@
     hashedPassword = "$y$j9T$Ws0o6OJC/SEaRtJMt9Z82.$KJWl1EQNy/lUAzAggFswuSNmG09xugIRhkjjIGgiXF7";
   };
 
-  # Enable auto-mount feature
-  services.devmon.enable = true;
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
-
   environment.enableAllTerminfo = true;
 }
