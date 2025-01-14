@@ -7,7 +7,9 @@
     enable = true;
     xkb.layout = "us";
 
-    desktopManager.runXdgAutostartIfNone = true;
+    desktopManager = {
+      xterm.enable = false;
+    };
 
     displayManager = {
       lightdm.enable = true;
