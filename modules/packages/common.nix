@@ -43,6 +43,7 @@
       dust
       duf
       tldr
+      tmuxp
 
       micromamba
     ])
