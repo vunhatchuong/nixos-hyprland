@@ -16,7 +16,15 @@
     docker-compose
   ];
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    promptInit = "";
+    # TODO: Find a way to fix this hack
+    shellInit = ''
+      source ~/.config/zsh/.zshenv
+      source ~/.config/zsh/.zprofile
+    '';
+  };
   users.defaultUserShell = pkgs.zsh;
 
   users.users.ronny = {
@@ -31,4 +39,5 @@
   };
 
   environment.enableAllTerminfo = true;
+  environment.shells = with pkgs; [ zsh ];
 }
