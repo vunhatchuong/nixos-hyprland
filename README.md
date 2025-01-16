@@ -19,11 +19,12 @@ Personalize for my [dotfiles](https://github.com/vunhatchuong/.dotfiles).
 Install NixOS from NixoS Minimal ISO with [disko](https://github.com/nix-community/disko).
 
 ```bash
-curl https://raw.githubusercontent.com/vunhatchuong/nixos-hyprland/main/scripts/disko-vm.nix -o /tmp/disko-config.nix
+sudo su
+
+curl https://dub.sh/6oIiTB3 -o /tmp/disko-config.nix
 nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount /tmp/disko-config.nix
 
 nixos-generate-config --root /mnt
-
 vim /mnt/etc/nixos/configuration.nix # Optional: add users.users.<username>.initialPassword = "<pass>";
 
 nixos-install
@@ -35,7 +36,7 @@ reboot
 
 ```bash
 nix-shell -p curl git
-sh <(curl -L https://github.com/vunhatchuong/nixos-hyprland/raw/main/scripts/install.sh)
+sh <(curl -L https://dub.sh/gKZkDnV)
 ```
 
 To update later:
