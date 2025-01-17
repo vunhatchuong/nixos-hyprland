@@ -64,8 +64,8 @@
   # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    # enableSSHSupport = true;
-    pinentryPackage = pkgs.pinentry-tty;
+    enableSSHSupport = true; # Still needs even when enable in gpg-agent.conf
+    pinentryPackage = pkgs.pinentry-curses;
   };
 
   # services.gpg-agent = {

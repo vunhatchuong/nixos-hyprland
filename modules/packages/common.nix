@@ -16,6 +16,7 @@
 
       jq
       imagemagick
+      sops
 
       tmux
       neovim
@@ -46,6 +47,8 @@
       tmuxp
 
       micromamba
+
+      nodejs # Required by neovim
     ])
 
     ++
