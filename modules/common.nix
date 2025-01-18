@@ -40,4 +40,10 @@
 
   environment.enableAllTerminfo = true;
   environment.shells = with pkgs; [ zsh ];
+
+  # Uses rust implementation of the 'switch'
+  system.switch = {
+    enable = false;
+    enableNg = true;
+  };
 }

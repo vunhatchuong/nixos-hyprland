@@ -43,7 +43,7 @@
       chafa
       dust
       duf
-      tldr
+      tealdeer
       tmuxp
 
       micromamba
