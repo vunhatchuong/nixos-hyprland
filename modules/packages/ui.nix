@@ -35,5 +35,8 @@
     hoppscotch
 
     jetbrains.idea-community-bin
+
+    zathura
+    sioyek
   ];
 }
