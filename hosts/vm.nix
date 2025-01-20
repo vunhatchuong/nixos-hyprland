@@ -43,21 +43,9 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.mutableUsers = false;
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      # For hypervisors that support auto-resizing, this script forces it.
-      # I've noticed not everyone listens to the udev events so this is a hack.
-      (writeShellScriptBin "xrandr-auto" ''
-        xrandr --output Virtual-1 --auto
-      '')
-    ]
-    ++ lib.optionals (currentSystemName == "vm-aarch64") [
-      # This is needed for the vmware user tools clipboard to work.
-      # You can test if you don't need this by deleting this and seeing
-      # if the clipboard sill works.
-      gtkmm3
-    ];
+  services.xserver.displayManager.setupCommands = ''
+      ${pkgs.xorg.xrandr}/bin/xrandr --output Virtual-1 --auto
+  '';
 
   programs.gnupg.agent = {
     enable = true;
