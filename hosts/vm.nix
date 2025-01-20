@@ -59,19 +59,11 @@
       gtkmm3
     ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    enableSSHSupport = true; # Still needs even when enable in gpg-agent.conf
+    enableSSHSupport = true; # Still needs even when enabled in gpg-agent.conf
     pinentryPackage = pkgs.pinentry-curses;
   };
-
-  # services.gpg-agent = {
-  #   enable = true;
-  #   pinentryPackage = pkgs.pinentry-tty;
-  # };
 
   services.openssh = {
     enable = true;
