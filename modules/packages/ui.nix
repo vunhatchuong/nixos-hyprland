@@ -33,6 +33,7 @@
     obsidian
     zathura
     hoppscotch
+    speedcrunch
 
     jetbrains.idea-community-bin
 
