@@ -49,6 +49,8 @@
       micromamba
 
       nodejs # Required by neovim
+      xh
+      hurl
     ])
 
     ++
