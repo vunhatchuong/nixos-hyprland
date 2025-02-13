@@ -18,6 +18,11 @@
       imagemagick
       sops
 
+      gnupg
+      git
+      git-credential-manager
+      delta
+
       tmux
       neovim
       fastfetch
@@ -29,28 +34,24 @@
       fzf
       zoxide
 
-      gnupg
-      git
-      git-credential-manager
-      delta
-
-      lazygit
-      lazydocker
-      tre-command
-      broot
-      hyperfine
-      yazi
-      chafa
       dust
       duf
+      tre-command
       tealdeer
+      chafa
+
+      yazi
+      lazygit
+      lazydocker
+      broot
       tmuxp
+      hyperfine
+      xh
+      hurl
 
       micromamba
 
       nodejs # Required by neovim
-      xh
-      hurl
     ])
 
     ++
