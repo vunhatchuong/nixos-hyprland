@@ -49,6 +49,8 @@
       xh
       hurl
 
+      # carbonyl Doesn't exist yet
+
       micromamba
 
       nodejs # Required by neovim
